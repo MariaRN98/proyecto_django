@@ -1,0 +1,12 @@
+{% extends "aplicacion/base.html" %}
+
+{% block title %}Lista juegos{% endblock %}
+
+{% block contenido %}
+    <h1>Juegos</h1>
+    <ul>
+        {% for juego in listado_juegos %}
+        <a href="{% url 'detalle_juego' pk=juego.pk %}">{{ juego.nombre }}</a>
+        {% endfor %}
+    </ul>
+{% endblock %}
