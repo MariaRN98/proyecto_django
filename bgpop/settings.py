@@ -128,3 +128,9 @@ STATIC_ROOT = BASE_DIR / 'static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'aplicacion.Usuario'
+
+# Redirigir después de iniciar sesión
+LOGIN_REDIRECT_URL = ('listado_juegos')  # Cambia esto a la URL que desees
+
+# Redirigir después de cerrar sesión
+LOGOUT_REDIRECT_URL = '/accounts/login/'  # Cambia esto si lo necesitas

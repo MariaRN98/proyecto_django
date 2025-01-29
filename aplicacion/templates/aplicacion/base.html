@@ -6,6 +6,19 @@
     <title>{% block title %}bgpop{% endblock %}</title>
 </head>
 <body>
+
+    {% if user.is_authenticated %}
+    <p>¡Bienvenido de nuevo, {{ user.username }}!</p>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %} 
+        <button type="submit" class="">Cerrar Sesión</button>
+    </form>
+    {% else %}
+    <p>Por favor, <a href="{% url 'login' %}">inicia sesión</a> para acceder a más funciones.</p>
+    {% endif %}
+
+
+
     {% block contenido %}
     
     {% endblock %}
