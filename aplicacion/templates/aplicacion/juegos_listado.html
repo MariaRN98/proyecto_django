@@ -1,12 +1,34 @@
 {% extends "aplicacion/base.html" %}
 
-{% block title %}Lista juegos{% endblock %}
-
 {% block contenido %}
-    <h1>Juegos</h1>
-    <ul>
+<h2>Juegos</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Editorial</th>
+            <th>Jugadores</th>
+            <th>Mecanica/s</th>
+            <th>Categoria/s</th>
+            <th>Duracion</th>
+            <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for juego in listado_juegos %}
-        <a href="{% url 'detalle_juego' pk=juego.pk %}">{{ juego.nombre }}</a>
+        <tr>
+            <td><a href="{%url 'detalle_juego' pk=juego.pk%}">{{ juego.nombre }}</a></td>
+            <td>{{ juego.imagen }}</td>
+            <td>{{ juego.editorial }}</td>
+            <td>{{ juego.jugadores }}</td>
+            <td>{{ juego.mecanica }}</td>
+            <td>{{ juego.categoria }}</td>
+            <td>{{ juego.duracion }}</td>
+            <td>{{ juego.descripcion }}</td>
+
+        </tr>
         {% endfor %}
-    </ul>
+    </tbody>
+</table>
 {% endblock %}

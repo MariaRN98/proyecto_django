@@ -2,8 +2,9 @@ from django.shortcuts import render
 from .models import *
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView, DetailView
 from django.urls import reverse_lazy
+from .forms import UsuarioCreationForm
 
-# Create your views here.
+# juegos
 class ListadoJuegos(ListView):
     model = Juego
     template_name = 'aplicacion/juegos_listado.html'
@@ -20,3 +21,15 @@ class EditarJuego(UpdateView):
     context_object_name = 'editar_juego'
     fields = '__all__'
     success_url = reverse_lazy('listado_juegos')
+
+# usuarios
+
+class RegistroView(CreateView):
+    form_class = UsuarioCreationForm
+    template_name = 'registration/registro.html'
+    success_url = reverse_lazy('login')  # Redirige al login después del registro
+
+class Detalleusuario(DetailView):
+    model = Usuario
+    template_name = 'aplicacion/usuario_detalle.html'
+    context_object_name = 'detalle_usuario'

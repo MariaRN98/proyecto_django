@@ -1,0 +1,11 @@
+{% extends "aplicacion/base.html" %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block contenido %}
+    <h2>Perfil de usuario</h2>
+    <p>Nombre de usuario: {{ user.username }}</p>
+    <p>Correo electrónico: {{ user.email }}</p>
+    <p>Fecha de creación: {{ user.date_joined }}</p>
+    <p>Última actualización: {{ user.last_login }}</p>
+{% endblock %}

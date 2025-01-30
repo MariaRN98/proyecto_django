@@ -1,10 +1,38 @@
+
 {% extends "aplicacion/base.html" %}
 
-{% block title %}Detalle Juego{% endblock %}
+{% block titulo %}{{ object.nombre }} - Detalle{% endblock %}
 
 {% block contenido %}
-<h1>detalle juego</h1>
-{{object.nombre}}
+<div class="juego-detalle">
+    <h1>{{ object.nombre }}</h1>
 
+    {% if object.imagen %}
+        <img src="{{ object.imagen.url }}" alt="{{ object.nombre }}" style="max-width: 300px;">
+    {% endif %}
 
+    <p><strong>Editorial:</strong> {{ object.editorial }}</p>
+    <p><strong>Jugadores:</strong> {{ object.jugadores }}</p>
+    
+    <p><strong>Mecánicas:</strong> 
+        {% for mecanica in object.mecanica.all %}
+            {{ mecanica.nombre }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+            No especificadas.
+        {% endfor %}
+    </p>
+
+    <p><strong>Categorías:</strong> 
+        {% for categoria in object.categoria.all %}
+            {{ categoria.nombre }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+            No especificadas.
+        {% endfor %}
+    </p>
+
+    <p><strong>Duración:</strong> {{ object.duracion }}</p>
+    <p><strong>Descripción:</strong> {{ object.descripcion }}</p>
+
+    <a href="{% url 'listado_juegos' %}">Volver a la lista</a>
+</div>
 {% endblock %}
